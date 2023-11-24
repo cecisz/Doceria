@@ -36,6 +36,12 @@ public class Pedido extends Model{
 	@ManyToMany
 	public List<Item> itens;
 	
+	//public Double total() {
+		//double acumulador = 0;
+		//for (int i = 0; i < itens.size(); i++) {
+		//	Item[i].p
+		//}
+	//}
 
 
 }

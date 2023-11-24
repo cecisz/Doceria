@@ -12,6 +12,7 @@
 			<th>#</th>
 			<th>Forma de pagamento</th>
 			<th>Mesa</th>
+			<th>Cancelado</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -20,6 +21,7 @@
 			<th>${p.id}</th>
 			<td>${p.pagamento}</td>
 			<td>${p.mesa.numero}</td>
+			<td>${p.cancelado}</td>
 
 			<td><a href="@{Pedidos.cancelar(p.id)}" class="btn btn-danger">Cancelar</a>
 			<a href="@{Pedidos.detalhar(p.id)}" class="btn btn-info">Detalhar</a></td>

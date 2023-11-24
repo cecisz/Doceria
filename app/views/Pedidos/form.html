@@ -22,7 +22,7 @@
 					<h1>Opcoes:</h1>
 					<ul>
 						#{list items:itens, as:'i'}
-						<li>${i} <a href="@{Pedidos.add(i.id)}">Adicionar</a></li>
+						<li>${i} ____________________R$ ${i.preco}<a href="@{Pedidos.add(i.id)}">Adicionar</a></li>
 						#{/list}
 					</ul>
 
