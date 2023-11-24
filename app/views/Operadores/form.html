@@ -1,0 +1,52 @@
+#{extends 'main.html' /} #{if c} #{set title:'Edicao de Operador' /}
+#{/if} #{else} #{set title:'Cadastro de Operador' /} #{/else}
+
+<div class="container col-8 bg-light m-auto">
+
+	<br />
+	<div class="text-center">
+		<h1>#{get 'title' /}</h1>
+	</div>
+
+	<br />
+
+	<form action="/operadores/salvar" method="post">
+
+		<input type="hidden" name="o.id" value="${o?.id}" />
+
+		<div class="mb-3">
+			<div class="mb-3">
+				<b><label class="form-label">Nome:</label></b> <input
+					class="form-control" type="text" name="o.nomecli"
+					value="${o?.nomecli}" />
+			</div>
+
+			<div class="mb-3">
+				<b><label class="form-label">Email:</label></b> <input
+					class="form-control" type="email" name="o.email" value="${o?.email}" />
+			</div>
+
+			<div class="mb-3">
+				<b><label class="form-label">Senha:</label></b> <input
+					class="form-control" type="password" name="o.senha"
+					value="${o?.senha}" />
+			</div>
+
+			<div class="mb-3">
+				<b><label class="form-label">Numero de celular:</label></b> <input
+					class="form-control" type="text" name="o.numcel"
+					value="${o?.numcel}" />
+			</div>
+
+			<div class="mb-3">
+				<b><label class="form-label">CPF:</label></b> <input
+					class="form-control" type="text" name="o.cpf" value="${o?.cpf}" />
+			</div>
+
+			#{if o} <input type="submit" value="Atualizar"
+				class="btn btn-success" /> #{/if} #{else} <input type="submit"
+				value="Cadastrar" class="btn btn-primary" /> #{/else}
+
+		</div>
+	</form>
+</div>

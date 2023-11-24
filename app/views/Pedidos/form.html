@@ -1,0 +1,74 @@
+#{extends 'main.html' /} #{set title:'Faca seu pedido ' /}
+
+
+<div class="container col-8 bg-light m-auto">
+
+	<br />
+	<div class="text-center ">
+		<h1>#{get 'title' /}</h1>
+	</div>
+
+
+	<br />
+
+	<form method="POST" action="/pedidos/salvar">
+		<div class="mb-3">
+
+			<div class="mb-3">
+				<b><label class="form-label">Faca seu pedido:</label></b>
+
+
+				<div class="mb-3">
+					<h1>Opcoes:</h1>
+					<ul>
+						#{list items:itens, as:'i'}
+						<li>${i} <a href="@{Pedidos.add(i.id)}">Adicionar</a></li>
+						#{/list}
+					</ul>
+
+				</div>
+
+
+			</div>
+
+			<div class="mb-3">
+				<b><label class="form-label">Forma de pagamento</label></b>
+
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="p.pagamento"
+						value="especie" /> Especie
+				</div>
+
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="p.pagamento"
+						value="credito" /> Cartao
+				</div>
+
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="p.pagamento"
+						value="Pix" /> Pix
+				</div>
+
+			</div>
+
+
+			<div class="mb-3">
+				<b><label class="form-label">Mesas:</label></b> <select
+					name="p.mesa.id" class="form-select"> #{list
+					items:mesas, as:'m'}
+					<option value="${m.id}">${m.numero}</option> #{/list}
+				</select>
+			</div>
+
+			<h1>Adicionados:</h1>
+			<ul>
+				#{list items:carrinho, as:'i'}
+				<li>${i} <a href="@{Itens.removeritem(i.id)}">Remover</a></li> #{/list}
+			</ul>
+
+			<br /> <input type="submit" class="btn btn-primary">
+		</div>
+
+
+	</form>
+</div>

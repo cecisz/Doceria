@@ -1,0 +1,47 @@
+#{extends 'main.html' /} #{set title:'listagem de Operadores' /}
+
+<h1>#{get 'title' /}</h1>
+
+<form action="@{Operadores.listar}" method="GET">
+	<div class="row">
+		<div class="col-9">
+			<input class="form-control" type="text" name="pesquisa"
+				value="${pesquisa}"
+				placeholder="Informe o nome ou o email do operador" />
+		</div>
+		<div class="col-3">
+			<input type="submit" class="btn btn-primary mb-3" value="Procurar" />
+		</div>
+	</div>
+</form>
+
+<a href="@{Operadores.form}" class="btn btn-primary">Cadastrar novo Operador</a>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Nome</th>
+			<th>Email</th>
+			<th>Senha</th>
+			<th>CPF</th>
+			<th>Numero de celular</th>
+		</tr>
+	</thead>
+	<tbody>
+		#{list items:operadores, as:'o'}
+		<tr>
+			<th>${o.id}</th>
+			<th>${o.nomecli}</th>
+			<td>${o.email}</td>
+			<td>${o.senha}</td>
+			<td>${o.cpf}</td>
+			<td>${o.numcel}</td>
+
+			<td><a href="@{Operadores.remover(o.id)}" class="btn btn-danger">Remover</a>
+				<a href="@{Operadores.editar(o.id)}" class="btn btn-info">Editar</a></td>
+		</tr>
+		#{/list}
+	</tbody>
+</table>
+

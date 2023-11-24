@@ -1,0 +1,30 @@
+ #{extends 'main.html' /} #{set title:'listagem de pedidos' /}
+
+<h1>#{get 'title' /}</h1>
+
+
+<a href="@{Pedidos.form}" class="btn btn-primary">Realizar novo
+	pedido</a>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Forma de pagamento</th>
+			<th>Mesa</th>
+		</tr>
+	</thead>
+	<tbody>
+		#{list items:pedidos, as:'p'}
+		<tr>
+			<th>${p.id}</th>
+			<td>${p.pagamento}</td>
+			<td>${p.mesa.numero}</td>
+
+			<td><a href="@{Pedidos.cancelar(p.id)}" class="btn btn-danger">Cancelar</a>
+			<a href="@{Pedidos.detalhar(p.id)}" class="btn btn-info">Detalhar</a></td>
+		</tr>
+		#{/list}
+	</tbody>
+
+</table>
