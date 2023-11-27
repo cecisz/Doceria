@@ -24,6 +24,11 @@ public class Pedidos extends Controller{
 	}
 	
 	public static void add(Long id) {
+		if(id == null | id == 0) {
+			flash.error("É necessário selecionar uma opção");
+			form();
+		}
+		
 		List<Item> carrinho = Cache.get(session.getId(), List.class);
 	 	if (carrinho == null) {
 	 		carrinho = new ArrayList<Item>();
@@ -39,6 +44,10 @@ public class Pedidos extends Controller{
 		List<Item> carrinho = Cache.get(session.getId(), List.class);
 		if (carrinho == null) {
 			form();
+		}
+		
+		for (Item item : carrinho) {
+			p.total += item.preco;
 		}
 		
 		p.itens = carrinho;
@@ -65,9 +74,8 @@ public class Pedidos extends Controller{
 	}
 	
 	public static void detalhar(Long id) {
-		Pedido pedido = Pedido.findById(id);
-		double total = Pedido.total();		
-		render(pedido, total);
+		Pedido pedido = Pedido.findById(id);	
+		render(pedido);
 	}
 	
 	public static void cancelar(Long id) {

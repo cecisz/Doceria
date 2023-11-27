@@ -17,7 +17,7 @@ public class Pedido extends Model{
 
 	public String pagamento;
 	public Boolean cancelado;
-	public double total;
+	public double total = 0;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	public Date data;
@@ -39,23 +39,15 @@ public class Pedido extends Model{
 	public List<Item> itens;
 	
 	
-	public static Double total() {
-		List<Item> itens = Item.findAll();
+	//public static Double total() {
+		//List<Item> itens = Item.findAll();
 
-		double acumulador = 0;
-		for (int i = 0; i < itens.size(); i++) {
-		acumulador += itens.get(i).preco;
-		}
-		return acumulador;
-		}
-	//}
-	
-	//public Double total() {
-		//double acumulador = 0;
+	//	double acumulador = 0;
 		//for (int i = 0; i < itens.size(); i++) {
-		//	Item[i].p
+		//acumulador += itens.get(i).preco;
 		//}
-	//}
+		//return acumulador;
+		//}
 
 
 }

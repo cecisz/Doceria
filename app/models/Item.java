@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Entity;
 
 import play.cache.Cache;
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
 @Entity
