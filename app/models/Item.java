@@ -1,7 +1,10 @@
 package models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 
+import play.cache.Cache;
 import play.db.jpa.Model;
 
 @Entity
@@ -15,6 +18,6 @@ public class Item extends Model {
 		return nome;
 	}
 
-	
+
 
 }

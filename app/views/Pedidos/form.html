@@ -1,6 +1,9 @@
 #{extends 'main.html' /} #{set title:'Faca seu pedido ' /}
 
 
+
+
+
 <div class="container col-8 bg-light m-auto">
 
 	<br />
@@ -12,17 +15,15 @@
 	<br />
 
 	<form method="POST" action="/pedidos/salvar">
-		<div class="mb-3">
+		<div class="mb-3 col-11">
 
 			<div class="mb-3">
-				<b><label class="form-label">Faca seu pedido:</label></b>
-
-
+				
 				<div class="mb-3">
-					<h1>Opcoes:</h1>
-					<ul>
+					<h1> Opcoes:</h1>
+					<ul class="list-group list-group-flush">
 						#{list items:itens, as:'i'}
-						<li>${i} ____________________R$ ${i.preco}<a href="@{Pedidos.add(i.id)}">Adicionar</a></li>
+						<li class="list-group-item">${i}  _______________________________ R$ ${i.preco} <div class="position-absolute top-50 start-100 translate-middle"><a href="@{Pedidos.add(i.id)}" class="btn btn-success">Adicionar</a></div><br></li>
 						#{/list}
 					</ul>
 
@@ -52,7 +53,7 @@
 			</div>
 
 
-			<div class="mb-3">
+			<div class="mb-3 ">
 				<b><label class="form-label">Mesas:</label></b> <select
 					name="p.mesa.id" class="form-select"> #{list
 					items:mesas, as:'m'}
@@ -61,12 +62,12 @@
 			</div>
 
 			<h1>Adicionados:</h1>
-			<ul>
+			<ul class="list-group list-group-numbered">
 				#{list items:carrinho, as:'i'}
-				<li>${i} <a href="@{Itens.removeritem(i.id)}">Remover</a></li> #{/list}
+				<li class="list-group-item">${i} <div  class="position-absolute top-50 start-100 translate-middle"><a href="@{Itens.removeritem(i.id)}"  class="btn btn-danger">Remover</a></div></li> #{/list}
 			</ul>
 
-			<br /> <input type="submit" class="btn btn-primary">
+			<br /> <input type="submit" value="Finalizar Pedido" class="btn btn-primary">
 		</div>
 
 

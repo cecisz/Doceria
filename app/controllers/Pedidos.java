@@ -66,7 +66,8 @@ public class Pedidos extends Controller{
 	
 	public static void detalhar(Long id) {
 		Pedido pedido = Pedido.findById(id);
-		render(pedido);
+		double total = Pedido.total();		
+		render(pedido, total);
 	}
 	
 	public static void cancelar(Long id) {

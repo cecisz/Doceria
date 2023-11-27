@@ -2,11 +2,13 @@
 #{set title:'Home' /}
 
 <h1>Pedido ${pedido.id}</h1>
-<ul>
+<ul class="list-group list-group-numbered">
 	#{list items:pedido.itens, as:'i'}
-		<li>${i.nome} R$ ${i.preco}</li>
+		<li class="list-group-item">${i.nome} R$ ${i.preco}</li>
+		<li class="list-group-item"> Total do Pedido: R$ ${total}</li>
 	#{/list}
 </ul>
 
+<br/>
 
 <a href="@{Pedidos.form}" class="btn btn-primary">Realize um novo pedido</a>
