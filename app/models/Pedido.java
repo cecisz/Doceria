@@ -10,11 +10,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import play.cache.Cache;
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
 @Entity
 public class Pedido extends Model{
 
+	@Required
 	public String pagamento;
 	public Boolean cancelado;
 	public double total = 0;

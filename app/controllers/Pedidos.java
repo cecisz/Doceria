@@ -1,7 +1,10 @@
 package controllers;
 
+import java.awt.Window;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JOptionPane;
 
 import play.cache.Cache;
 import models.Pedido;
@@ -24,8 +27,10 @@ public class Pedidos extends Controller{
 	}
 	
 	public static void add(Long id) {
-		if(id == null | id == 0) {
+		Item i = Item.findById(id);
+		if(i.id == null) {
 			flash.error("É necessário selecionar uma opção");
+			//JOptionPane.showMessageDialog(null, "É necessário selecionar uma opção", null, JOptionPane.ERROR_MESSAGE);
 			form();
 		}
 		

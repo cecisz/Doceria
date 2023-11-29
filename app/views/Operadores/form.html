@@ -20,28 +20,33 @@
 				<b><label class="form-label">Nome:</label></b> 
 				<input class="form-control" type="text" name="o.nomecli"
 					value="${o?.nomecli}" required/>
+					<span class="text-danger">#{error 'o.nomecli' /}</span>
 			</div>
 
 			<div class="mb-3">
 				<b><label class="form-label">Email:</label></b> 
 				<input class="form-control" type="email" name="o.email" value="${o?.email}" required/>
+				<span class="text-danger">#{error 'o.email' /}</span>
 			</div>
 
 			<div class="mb-3">
 				<b><label class="form-label">Senha:</label></b> 
 				<input class="form-control" type="password" name="o.senha"
 					value="${o?.senha}" required/>
+					<span class="text-danger">#{error 'o.senha' /}</span>
 			</div>
 
 			<div class="mb-3">
 				<b><label class="form-label">Numero de celular:</label></b> <input
 					class="form-control" type="text" name="o.numcel"
 					value="${o?.numcel}" required/>
+					<span class="text-danger">#{error 'o.numcel' /}</span>
 			</div>
 
 			<div class="mb-3">
 				<b><label class="form-label">CPF:</label></b> <input
 					class="form-control" type="text" name="o.cpf" value="${o?.cpf}" required/>
+					<span class="text-danger">#{error 'o.cpf' /}</span>
 			</div>
 
 			#{if o} <input type="submit" value="Atualizar"

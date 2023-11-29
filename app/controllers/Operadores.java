@@ -3,6 +3,7 @@ package controllers;
 import java.util.List;
 
 import models.Operador;
+import play.data.validation.Valid;
 import play.mvc.Controller;
 import play.mvc.With;
 
@@ -13,7 +14,12 @@ public class Operadores extends Controller {
 		render();
 	}
 	
-	public static void salvar(Operador o) {
+	public static void salvar(@Valid Operador o) {
+		
+		if(validation.hasErrors()) {
+			validation.keep();
+			form();
+		}
 		o.save();
 		listar(null);
 	}
