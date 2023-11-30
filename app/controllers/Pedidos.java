@@ -7,6 +7,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import play.cache.Cache;
+import play.data.validation.Valid;
 import models.Pedido;
 import models.Item;
 import models.Mesa;
@@ -27,12 +28,6 @@ public class Pedidos extends Controller{
 	}
 	
 	public static void add(Long id) {
-		Item i = Item.findById(id);
-		if(i.id == null) {
-			flash.error("É necessário selecionar uma opção");
-			//JOptionPane.showMessageDialog(null, "É necessário selecionar uma opção", null, JOptionPane.ERROR_MESSAGE);
-			form();
-		}
 		
 		List<Item> carrinho = Cache.get(session.getId(), List.class);
 	 	if (carrinho == null) {
@@ -45,9 +40,16 @@ public class Pedidos extends Controller{
 		form();
 	}
 	
-	public static void salvar(Pedido p) {
+	public static void salvar(@Valid Pedido p) {
+		
+		if(validation.hasErrors()) {
+			validation.keep();
+			form();
+		}
+		
 		List<Item> carrinho = Cache.get(session.getId(), List.class);
 		if (carrinho == null) {
+			flash.error("É necessário selecionar uma opção");
 			form();
 		}
 		

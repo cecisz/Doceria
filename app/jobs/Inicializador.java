@@ -127,7 +127,7 @@ public class Inicializador extends Job {
 			c1.cpf = "123";
 			c1.numcel = "123";
 			c1.email = "lace@gmail.com";
-			c1.senha = "123";
+			c1.senha = "123456";
 			
 			c1.save();
 		}

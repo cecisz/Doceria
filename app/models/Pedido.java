@@ -37,19 +37,11 @@ public class Pedido extends Model{
 	@ManyToOne
 	public Mesa mesa;
 	
+	@ManyToOne
+	public Operador operador;
+	
 	@ManyToMany
 	public List<Item> itens;
 	
-	
-	//public static Double total() {
-		//List<Item> itens = Item.findAll();
-
-	//	double acumulador = 0;
-		//for (int i = 0; i < itens.size(); i++) {
-		//acumulador += itens.get(i).preco;
-		//}
-		//return acumulador;
-		//}
-
 
 }

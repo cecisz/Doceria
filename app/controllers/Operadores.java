@@ -17,6 +17,7 @@ public class Operadores extends Controller {
 	public static void salvar(@Valid Operador o) {
 		
 		if(validation.hasErrors()) {
+			params.flash();
 			validation.keep();
 			form();
 		}
@@ -43,8 +44,14 @@ public class Operadores extends Controller {
 	
 	public static void editar(Long id) {
 		Operador o = Operador.findById(id);
+		flash.put("o.nomecli", o.nomecli);
+		flash.put("o.cpf", o.cpf);
+		flash.put("o.email", o.email);
+		flash.put("o.senha", o.senha);
+		flash.put("o.numcel", o.numcel);
 		renderTemplate("Operadores/form.html", o);
     }
+	
 	
 
 	
