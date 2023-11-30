@@ -30,10 +30,5 @@ public class Itens extends Controller {
 		Cache.set(session.getId(), carrinho);
     	Pedidos.form();
 
-		// public static void removeritem(Long id) {
-		// Item i = Item.findById(id);
-		// i.delete();
-		// Pedidos.form();
-		// }
 	}
 }
