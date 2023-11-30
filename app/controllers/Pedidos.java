@@ -40,6 +40,13 @@ public class Pedidos extends Controller{
 		form();
 	}
 	
+	public static void cancelar(Long id) {
+		Pedido p = Pedido.findById(id);
+		p.cancelado = true;
+		p.save();
+		Pedidos.form();
+	}
+	
 	public static void salvar(@Valid Pedido p) {
 		
 		if(validation.hasErrors()) {
@@ -64,11 +71,6 @@ public class Pedidos extends Controller{
 		
 	}
 	
-	public static void editar(Long id) {
-		Pedido p = Pedido.findById(id);
-		renderTemplate("Pedidos/form.html", p);
-    }
-	
 	public static void listar() {
 		List<Pedido>pedidos=Pedido.findAll();
 		render(pedidos);
@@ -83,14 +85,6 @@ public class Pedidos extends Controller{
 	public static void detalhar(Long id) {
 		Pedido pedido = Pedido.findById(id);	
 		render(pedido);
-	}
-	
-	public static void cancelar(Long id) {
-		Pedido p = Pedido.findById(id);
-		p.cancelado = true;
-		p.save();
-		Pedidos.form();
-		
 	}
 	
 	

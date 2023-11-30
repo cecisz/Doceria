@@ -25,6 +25,16 @@ public class Operadores extends Controller {
 		listar(null);
 	}
 	
+	public static void editar(Long id) {
+		Operador o = Operador.findById(id);
+		flash.put("o.nomecli", o.nomecli);
+		flash.put("o.cpf", o.cpf);
+		flash.put("o.email", o.email);
+		flash.put("o.senha", o.senha);
+		flash.put("o.numcel", o.numcel);
+		renderTemplate("Operadores/form.html", o);
+    }
+	
 	public static void listar(String pesquisa) {
 		List<Operador> operadores= null;
 		if(pesquisa == null || pesquisa.isEmpty()){
@@ -42,15 +52,7 @@ public class Operadores extends Controller {
 		listar(null);
 	}
 	
-	public static void editar(Long id) {
-		Operador o = Operador.findById(id);
-		flash.put("o.nomecli", o.nomecli);
-		flash.put("o.cpf", o.cpf);
-		flash.put("o.email", o.email);
-		flash.put("o.senha", o.senha);
-		flash.put("o.numcel", o.numcel);
-		renderTemplate("Operadores/form.html", o);
-    }
+	
 	
 	
 
