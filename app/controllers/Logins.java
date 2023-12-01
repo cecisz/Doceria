@@ -1,7 +1,6 @@
 package controllers;
 
 import models.Operador;
-
 import play.mvc.Controller;
 import play.mvc.With;
 
@@ -12,19 +11,19 @@ public class Logins extends Controller{
 		render();
 	}
 	
-	public static void logar(String email, String senha) {
+public static void logar(String email, String senha) {
 		
 		Operador operador = Operador.find("email = ?1 and senha = ?2", email, senha).first();
 		
-			if(operador == null) {
-					flash.error("E-mail ou senha incorreto");
-					login();
-			}else {
-				session.put("usuarioLogado", operador.email);
-				flash.success("Login realizado com sucesso!");
-				Operadores.listar("");
-			}
+	if (operador!= null) {
+		session.put("usuarioLogado", operador.nomecli);
+		flash.success("Login realizado com sucesso!");
+		Operadores.listar("");
 	}
+	
+	flash.error("Credenciais inválidas");
+	login();
+}
 	
 	public static void logout() {
 		session.clear();
