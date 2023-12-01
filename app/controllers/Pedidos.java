@@ -49,10 +49,12 @@ public class Pedidos extends Controller{
 	
 	public static void salvar(@Valid Pedido p) {
 		
+		
 		if(validation.hasErrors()) {
 			validation.keep();
 			form();
 		}
+		
 		
 		List<Item> carrinho = Cache.get(session.getId(), List.class);
 		if (carrinho == null) {
@@ -60,9 +62,13 @@ public class Pedidos extends Controller{
 			form();
 		}
 		
+		Operador v1 = Operador.find("email = ?1", session.get("usuarioLogado")).first();
+		p.operador = v1;
+		
 		for (Item item : carrinho) {
 			p.total += item.preco;
 		}
+		
 		
 		p.itens = carrinho;
 		p.save();

@@ -21,6 +21,7 @@ public class Pedido extends Model{
 	public Boolean cancelado;
 	public double total = 0;
 	
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	public Date data;
 	
