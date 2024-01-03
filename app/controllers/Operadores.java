@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.Collections;
 import java.util.List;
 
 import models.Operador;
@@ -47,6 +48,16 @@ public class Operadores extends Controller {
 		render(operadores, pesquisa);
 	}
 	
+	public static void listarAjax(String pesquisa) {
+		List<Operador> operadores = Collections.emptyList();
+		if (pesquisa == null || pesquisa.trim().isEmpty()) {
+			operadores = Operador.findAll();
+		} else {
+			operadores = Operador.find("nomecli like ?1 or email like ?1", "%"+pesquisa+"%").fetch();
+		}
+		System.out.println(operadores.size());
+		renderJSON(operadores);
+	}
 	public static void remover(Long id) {
 		Operador o = Operador.findById(id);
 		o.delete();

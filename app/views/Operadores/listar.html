@@ -28,20 +28,44 @@
 			<th>Numero de celular</th>
 		</tr>
 	</thead>
-	<tbody>
-		#{list items:operadores, as:'o'}
-		<tr>
-			<th>${o.id}</th>
-			<th>${o.nomecli}</th>
-			<td>${o.email}</td>
-			<td>${o.senha}</td>
-			<td>${o.cpf}</td>
-			<td>${o.numcel}</td>
+	<tbody id="result">
+<!-- 		{list items:operadores, as:'o'} -->
+<!-- 		<tr> -->
+<!-- 			<th>{o.id}</th> -->
+<!-- 			<th>{o.nomecli}</th> -->
+<!-- 			<td>{o.email}</td> -->
+<!-- 			<td>{o.senha}</td> -->
+<!-- 			<td>{o.cpf}</td> -->
+<!-- 			<td>{o.numcel}</td> -->
 
-			<td><a href="@{Operadores.remover(o.id)}" class="btn btn-danger">Remover</a>
-				<a href="@{Operadores.editar(o.id)}" class="btn btn-info">Editar</a></td>
-		</tr>
-		#{/list}
+<!-- 			<td><a href="{Operadores.remover(o.id)}" class="btn btn-danger">Remover</a> -->
+<!-- 				<a href="{Operadores.editar(o.id)}" class="btn btn-info">Editar</a></td> -->
+<!-- 		</tr> -->
+<!-- 		{/list} -->
 	</tbody>
+	
+<script type="text/javascript">
+$(document).ready(function() {
+	$("form").submit(function(e) {
+	 e.preventDefault();
+	 $.ajax({
+		 type: "GET",
+		 url: "@{Operadores.listarAjax}", 
+		 data: $(this).serialize(),
+		 success: function(data) {
+			 $("#result").empty();
+			 $.each(data, function(p,pesquisa) {
+				 $("#result").append("<tr><td>" + pesquisa.id + "</td>" + "<td>" + pesquisa.nomecli + 
+						 "</td>" + "<td>" + pesquisa.email + "</td>" + "<td>" + pesquisa.senha + "</td>"
+						 + "<td>" + pesquisa.cpf + "</td>" + "<td>" + pesquisa.numcel + "</td>"+"<td>" +
+				 "  <a href=/operadores/form?id="  + pesquisa.id +">Editar</a>" +
+				 "  <a href=/operadores/remover?id="  + pesquisa.id + ">Remover</a></td></tr>");
+			 });
+		 }
+	 });
+	});
+});
+</script>
+	
 </table>
 
