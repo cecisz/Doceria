@@ -58,8 +58,8 @@ $(document).ready(function() {
 				 $("#result").append("<tr><td>" + pesquisa.id + "</td>" + "<td>" + pesquisa.nomecli + 
 						 "</td>" + "<td>" + pesquisa.email + "</td>" + "<td>" + pesquisa.senha + "</td>"
 						 + "<td>" + pesquisa.cpf + "</td>" + "<td>" + pesquisa.numcel + "</td>"+"<td>" +
-				 "  <a href=/operadores/form?id="  + pesquisa.id +">Editar</a>" +
-				 "  <a href=/operadores/remover?id="  + pesquisa.id + ">Remover</a></td></tr>");
+				 "  <a href=/operadores/form?id= class='btn btn-info'"  + pesquisa.id +">Editar</a>" +
+				 "  <a href=/operadores/remover?id= class='btn btn-danger'"  + pesquisa.id + ">Remover</a></td></tr>");
 			 });
 		 }
 	 });

@@ -18,6 +18,14 @@
 		<div class="mb-3 col-11">
 
 			<div class="mb-3">
+			
+				<div class="mb-3 ">
+				<b><label class="form-label">Mesa:</label></b> 
+				<select name="p.mesa.id" class="form-select"> 
+				#{list items:mesas, as:'m'}
+					<option value="${m.id}">${m.numero}</option> #{/list}
+				</select>
+			</div>
 				
 				<div class="mb-3">
 					<h1> Opcoes:</h1>
@@ -56,16 +64,7 @@
 				</div>
 
 			</div>
-
-
-			<div class="mb-3 ">
-				<b><label class="form-label">Mesas:</label></b> 
-				<select name="p.mesa.id" class="form-select"> 
-				#{list items:mesas, as:'m'}
-					<option value="${m.id}">${m.numero}</option> #{/list}
-				</select>
-			</div>
-			
+	
 
 			<h1>Adicionados:</h1>
 			<ul class="list-group list-group-numbered">
