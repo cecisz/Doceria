@@ -29,19 +29,19 @@
 		</tr>
 	</thead>
 	<tbody id="result">
-<!-- 		{list items:operadores, as:'o'} -->
-<!-- 		<tr> -->
-<!-- 			<th>{o.id}</th> -->
-<!-- 			<th>{o.nomecli}</th> -->
-<!-- 			<td>{o.email}</td> -->
-<!-- 			<td>{o.senha}</td> -->
-<!-- 			<td>{o.cpf}</td> -->
-<!-- 			<td>{o.numcel}</td> -->
+		#{list items:operadores, as:'o'}
+		<tr>
+			<th>${o.id}</th>
+			<th>${o.nomecli}</th>
+			<td>${o.email}</td>
+			<td>${o.senha}</td>
+			<td>${o.cpf}</td>
+			<td>${o.numcel}</td>
 
-<!-- 			<td><a href="{Operadores.remover(o.id)}" class="btn btn-danger">Remover</a> -->
-<!-- 				<a href="{Operadores.editar(o.id)}" class="btn btn-info">Editar</a></td> -->
-<!-- 		</tr> -->
-<!-- 		{/list} -->
+			<td><a href="@{Operadores.remover(o.id)}" class="btn btn-danger">Remover</a>
+				<a href="@{Operadores.editar(o.id)}" class="btn btn-info">Editar</a></td>
+		</tr>
+		#{/list}
 	</tbody>
 	
 <script type="text/javascript">
